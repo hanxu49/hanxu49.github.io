@@ -5,7 +5,7 @@
 ```
 def get_last_output(self,output,batch_seq_len):
     last_outputs = torch.zeros((output.shape[0],output.shape[2])) #output.shape[0] = batch_size, output.shape[2] = output_size
-    for i in range(len(batch_seq_len)): #len(batch_seq_len) == batch_size?
+    for i in range(len(batch_seq_len)): #len(batch_seq_len) == batch_size
         last_outputs[i] =  output[i][batch_seq_len[i]-1]#index 是长度 -1, 取序列长度seq_len的最后一个索引对应的output值，即为最后一个时间步长的值
     last_outputs = last_outputs.to(output.device)
     return last_outputs
